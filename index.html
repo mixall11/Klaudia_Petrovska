@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Klaudia Petrovská – Osobný profil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:    #c9737a;
+      --rose-lt: #f7e8ea;
+      --dark:    #2c2c2c;
+      --mid:     #5a5a5a;
+      --light:   #f9f4f5;
+      --gold:    #c4a35a;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #2c1a1d 0%, #5a2d35 50%, #8b4a54 100%);
+      color: #fff;
+      padding: 80px 20px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .avatar-wrap {
+      position: relative; display: inline-block; margin-bottom: 24px;
+    }
+    .avatar {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      border: 5px solid var(--gold);
+      object-fit: cover;
+      background: #5a2d35;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 64px;
+      overflow: hidden;
+    }
+    .avatar-ring {
+      position: absolute; inset: -10px;
+      border-radius: 50%;
+      border: 2px dashed rgba(196,163,90,0.5);
+      animation: spin 20s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .hero .tagline {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+    .hero .badges {
+      margin-top: 20px;
+      display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+    }
+    .badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 60px 0; }
+    section + section { border-top: 1px solid #e8dfe0; }
+
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      color: var(--rose);
+      margin-bottom: 8px;
+      position: relative;
+      display: inline-block;
+    }
+    h2.section-title::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 50px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-top: 6px;
+    }
+    .section-intro {
+      color: var(--mid);
+      font-size: 0.95rem;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+
+    /* ── INFO CARDS ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+    .info-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 22px 20px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-top: 3px solid var(--rose);
+      transition: transform .2s;
+    }
+    .info-card:hover { transform: translateY(-4px); }
+    .info-card .icon { font-size: 2rem; margin-bottom: 8px; }
+    .info-card .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--mid); margin-bottom: 4px; }
+    .info-card .value { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; }
+
+    /* ── STORY ── */
+    .story-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 700px) { .story-wrap { grid-template-columns: 1fr; } }
+    .story-text p { margin-bottom: 16px; color: var(--mid); font-size: 0.97rem; }
+    .story-text p:first-child { font-size: 1.1rem; color: var(--dark); font-style: italic; }
+    .story-quote {
+      background: linear-gradient(135deg, var(--rose-lt), #fff);
+      border-left: 4px solid var(--rose);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: var(--dark);
+      position: sticky; top: 20px;
+    }
+    .story-quote cite {
+      display: block;
+      margin-top: 14px;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-family: 'Lato', sans-serif;
+      color: var(--mid);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── TRAITS ── */
+    .traits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+    .trait-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .trait-icon {
+      font-size: 2.2rem; flex-shrink: 0;
+      width: 52px; height: 52px;
+      background: var(--rose-lt);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .trait-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 4px; }
+    .trait-card p { font-size: 0.85rem; color: var(--mid); }
+
+    /* ── HOROSCOPE ── */
+    .horo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    @media (max-width: 700px) { .horo-grid { grid-template-columns: 1fr; } }
+    .horo-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    }
+    .horo-card .horo-header {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+    }
+    .horo-symbol {
+      font-size: 3rem; width: 70px; height: 70px;
+      background: linear-gradient(135deg, var(--rose-lt), #fff);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid var(--rose);
+      flex-shrink: 0;
+    }
+    .horo-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; }
+    .horo-sub { font-size: 0.8rem; color: var(--mid); letter-spacing: 2px; text-transform: uppercase; }
+    .horo-traits { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    .horo-tag {
+      background: var(--rose-lt);
+      color: var(--rose);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .horo-card p { font-size: 0.9rem; color: var(--mid); margin-bottom: 10px; }
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 8px; }
+
+    /* ── ALBUM ── */
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .album-item {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, #e8d0d3, #c9737a);
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .album-item:hover { transform: scale(1.04); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+    .album-item .placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.8);
+      font-size: 2.5rem;
+      gap: 8px;
+    }
+    .album-item .placeholder span {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .album-item:nth-child(2) { background: linear-gradient(135deg, #d4b896, #a0785a); }
+    .album-item:nth-child(3) { background: linear-gradient(135deg, #96b8d4, #5a7ea0); }
+    .album-item:nth-child(4) { background: linear-gradient(135deg, #b8d496, #7aa05a); }
+    .album-item:nth-child(5) { background: linear-gradient(135deg, #d496b8, #a05a7a); }
+    .album-item:nth-child(6) { background: linear-gradient(135deg, #d4d496, #a0a05a); }
+    .album-item:nth-child(7) { background: linear-gradient(135deg, #96d4d4, #5aa0a0); }
+    .album-item:nth-child(8) { background: linear-gradient(135deg, #c9b8d4, #8a7aa0); }
+    .album-note {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--mid);
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #2c1a1d;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.85rem;
+    }
+    footer strong { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="avatar-wrap">
+    <div class="avatar">👩</div>
+    <div class="avatar-ring"></div>
+  </div>
+  <h1>Klaudia Petrovská</h1>
+  <p class="tagline">Matka · Bojovníčka · Žena so srdcom z ocele</p>
+  <div class="badges">
+    <span class="badge">♍ Panna</span>
+    <span class="badge">🐐 Rok Kozy</span>
+    <span class="badge">👶 Mama dvoch detí</span>
+    <span class="badge">💪 Silná žena</span>
+  </div>
+</div>
+
+<!-- ═══ OSOBNÉ INFO ═══ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Osobné informácie</h2>
+    <p class="section-intro">Základné fakty o výnimočnej žene</p>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="icon">🎂</div>
+        <div class="label">Narodená</div>
+        <div class="value">13. septembra 1991</div>
+      </div>
+      <div class="info-card">
+        <div class="icon">📍</div>
+        <div class="label">Domov</div>
+        <div class="value">Slovensko</div>
+      </div>
+      <div class="info-card">
+        <div class="icon">👧👦</div>
+        <div class="label">Deti</div>
+        <div class="value">Dve krásne deti</div>
+      </div>
+      <div class="info-card">
+        <div class="icon">♍</div>
+        <div class="label">Znamenie</div>
+        <div class="value">Panna</div>
+      </div>
+      <div class="info-card">
+        <div class="icon">🐐</div>
+        <div class="label">Čínsky zodiak</div>
+        <div class="value">Kovová Koza</div>
+      </div>
+      <div class="info-card">
+        <div class="icon">💫</div>
+        <div class="label">Životné heslo</div>
+        <div class="value">"Nezlomná"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRÍBEH ═══ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Jej príbeh</h2>
+    <p class="section-intro">Cesta, ktorá formovala výnimočnú ženu</p>
+    <div class="story-wrap">
+      <div class="story-text">
+        <p>Niektoré príbehy sa nezačínajú ľahko. Klaudia Petrovská je dôkazom, že z najtemnejších chvíľ môžu vzísť tí najsilnejší ľudia.</p>
+
+        <p>Vyrastala v časoch, keď okolnosti nepriazne osudu testovali jej charakter každý deň. Namiesto toho, aby sklesla pod tarchou ťažkostí, vybrala si ťažšiu cestu — cestu, ktorú si určila sama. Cestu dôstojnosti, sily a ticha.</p>
+
+        <p>Nikdy nechcela, aby ju niekto ľutoval. Tá hrdosť nie je arogancia — je to hlboký rešpekt k sebe samej, ktorý si vybudovala vtedy, keď ho nikto iný neponúkal. Naučila sa, že sebasúcit nie je slabosť, ale základ, z ktorého rastie skutočná sila.</p>
+
+        <p>Dnes, ako mama dvoch detí, prenáša do ich každodenného života niečo, čo sa nedá kúpiť ani naučiť z kníh — autentickú odolnosť. Jej deti nerastú v bubline, ale v láske ženy, ktorá vie, čo v živote skutočne záleží.</p>
+
+        <p>Klaudia nie je dokonalá. Je niečo vzácnejšie — je pravdivá. A tá pravdivosť robí z každého jej objatia bezpečný prístav, z každého jej slova — oporu.</p>
+      </div>
+      <blockquote class="story-quote">
+        „Nezlomí ma to, čo ma raz bolelo — práve to ma urobilo tou, ktorou dnes som. Moje deti neuvidia v mojich očiach ľútosť. Uvidia silu."
+        <cite>— Klaudia Petrovská</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VLASTNOSTI ═══ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Charakter a vlastnosti</h2>
+    <p class="section-intro">Čo robí Klaudiu tou, ktorou je</p>
+    <div class="traits-grid">
+      <div class="trait-card">
+        <div class="trait-icon">🔥</div>
+        <div>
+          <h4>Nezlomná sila</h4>
+          <p>Dokáže zniesť viac, ako by väčšina ľudí považovala za možné. Nie preto, že je tvrdá — ale preto, že vie, prečo bojuje.</p>
+        </div>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">💞</div>
+        <div>
+          <h4>Hlboká empatia</h4>
+          <p>Tí, ktorí prežili ťažké chvíle, dokážu pochopiť bolesť druhých spôsobom, ktorý nikto iný nedokáže. Klaudia cíti srdcom.</p>
+        </div>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">🎯</div>
+        <div>
+          <h4>Cieľavedomosť</h4>
+          <p>Keď si niečo zaumieni, ide za tým bez ohľadu na prekážky. Nie slepá tvrdohlavosť — múdra vytrvalosť.</p>
+        </div>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">🤫</div>
+        <div>
+          <h4>Hrdá mlčanlivosť</h4>
+          <p>Niektoré veci nehovorí nahlas. Jej boje sú jej vlastné — nenosí ich ako záťaž pred druhými, ale ako medale v srdci.</p>
+        </div>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">🌱</div>
+        <div>
+          <h4>Materinský inštinkt</h4>
+          <p>Jej deti sú jej najväčšou prioritou. V každom rozhodnutí je prítomná myšlienka — čo je pre nich najlepšie?</p>
+        </div>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">😂</div>
+        <div>
+          <h4>Zmysel pre humor</h4>
+          <p>Schopnosť smiať sa — aj nad sebou, aj nad životom — je dar, ktorý si dokázala zachovať napriek všetkému. Je to jej zbroj aj štít.</p>
+        </div>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">🧠</div>
+        <div>
+          <h4>Praktická múdrosť</h4>
+          <p>Škola života dala Klaudii niečo, čo sa neučí — schopnosť robiť správne rozhodnutia rýchlo, s jasnou hlavou.</p>
+        </div>
+      </div>
+      <div class="trait-card">
+        <div class="trait-icon">🤝</div>
+        <div>
+          <h4>Lojálnosť</h4>
+          <p>Ľudia, ktorých pustí do života blízko, sú tam natrvalo. Jej vernosť je vzácna — a preto ju nedáva ľahko.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOROSKOPY ═══ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Hviezdy a predispozície</h2>
+    <p class="section-intro">Čo hovorí európsky aj čínsky horoskop</p>
+    <div class="horo-grid">
+
+      <!-- EUROPSKÝ -->
+      <div class="horo-card">
+        <div class="horo-header">
+          <div class="horo-symbol">♍</div>
+          <div>
+            <div class="horo-name">Panna</div>
+            <div class="horo-sub">Európsky zodiak · 23. 8. – 22. 9.</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="horo-traits">
+          <span class="horo-tag">Analytická</span>
+          <span class="horo-tag">Spoľahlivá</span>
+          <span class="horo-tag">Starostlivá</span>
+          <span class="horo-tag">Perfekcionistka</span>
+          <span class="horo-tag">Praktická</span>
+        </div>
+        <p><strong>Charakter:</strong> Panna je znamením inteligencie, poriadku a hlbokej zodpovednosti. Ženy Panny nerobia veci napoly — keď sa do niečoho pustia, urobia to naplno a správne. Ich sila nie je hlučná, je tichá a absolútne spoľahlivá.</p>
+        <p><strong>Láska a rodina:</strong> Ako matky sú Panny mimoriadne starostlivé a pozorné. Všimnú si každý detail — čo ich dieťa potrebuje, cíti alebo mlčí. Ich láska sa prejavuje v konkrétnych činoch, nie len slovách.</p>
+        <p><strong>Slabiny a rast:</strong> Panny bývajú prísne samy na seba a môžu sa príliš trápiť detailmi. Keď sa naučia odpúšťať sebe rovnako ako druhým, odomkne sa im obrovská vnútorná sloboda.</p>
+        <p><strong>Vládca:</strong> Merkúr — planéta komunikácie, myslenia a precíznosti. Klaudia vie presne, čo chce povedať — a keď hovorí, má to váhu.</p>
+      </div>
+
+      <!-- ČÍNSKY -->
+      <div class="horo-card">
+        <div class="horo-header">
+          <div class="horo-symbol">🐐</div>
+          <div>
+            <div class="horo-name">Koza 羊</div>
+            <div class="horo-sub">Čínsky zodiak · Rok 1991</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="horo-traits">
+          <span class="horo-tag">Kreatívna</span>
+          <span class="horo-tag">Umelecká</span>
+          <span class="horo-tag">Empatická</span>
+          <span class="horo-tag">Pokojná</span>
+          <span class="horo-tag">Yin energia</span>
+        </div>
+
+        <table style="width:100%;font-size:0.82rem;margin:12px 0 16px;border-collapse:collapse;">
+          <tr>
+            <td style="padding:4px 8px 4px 0;color:#5a5a5a;white-space:nowrap;">☯ Yin / Yang</td>
+            <td style="padding:4px 0;font-weight:700;">Yin</td>
+            <td style="padding:4px 8px 4px 16px;color:#5a5a5a;white-space:nowrap;">🌿 Element</td>
+            <td style="padding:4px 0;font-weight:700;">Zem</td>
+          </tr>
+          <tr>
+            <td style="padding:4px 8px 4px 0;color:#5a5a5a;">🌙 Lunárny mes.</td>
+            <td style="font-weight:700;">6.</td>
+            <td style="padding:4px 8px 4px 16px;color:#5a5a5a;">🔢 Čísla</td>
+            <td style="font-weight:700;">2, 3, 4, 7, 9</td>
+          </tr>
+          <tr>
+            <td style="padding:4px 8px 4px 0;color:#5a5a5a;">🌸 Kvet</td>
+            <td style="font-weight:700;">Očko</td>
+            <td style="padding:4px 8px 4px 16px;color:#5a5a5a;">🎨 Farby</td>
+            <td style="font-weight:700;">Zelená, červená, fialová</td>
+          </tr>
+        </table>
+
+        <p><strong>Charakter:</strong> Koza je kreatívna a umelecky založená, často ponorená do činností, ktoré vyjadrujú jej prirodzený sklon ku kráse a umeniu. Dáva prednosť pokoju pred súťaživosťou — jej sila je tichá, hlboká a autentická.</p>
+        <p><strong>Kultúra a hĺbka:</strong> Čínsky horoskop nie je len veštenie — je to viac ako 2 000 rokov starý systém opierajúci sa o astronómiu, filozofiu jin a jang a lunárny kalendár. Koza v tomto systéme predstavuje yin energiu — prijímajúcu, citlivú, tvorivú.</p>
+        <p><strong>Rodina:</strong> Kozy sú výnimočné matky — intuitívne cítia, čo deti potrebujú. Vytvárajú domov, kde sa deti cítia milované a v bezpečí. Ich starostlivosť je hlboká a nezištná.</p>
+        <p><strong>Rok 2025–2026:</strong> Rok Hada prináša Koze obdobie hlbokého osobného rastu a upevňovania vzťahov. Čas, keď sa minulosť transformuje na múdrosť.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NUMEROLÓGIA ═══ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Numerologický horoskop</h2>
+    <p class="section-intro">Čo hovoria čísla o Klaudii · dátum narodenia 13. 9. 1991</p>
+
+    <!-- výpočty -->
+    <div style="background:#fff;border-radius:18px;padding:28px 28px 10px;box-shadow:0 4px 20px rgba(0,0,0,0.07);margin-bottom:30px;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:16px;color:#c9737a;">Výpočet čísel</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;font-size:0.88rem;">
+        <div style="background:#f9f4f5;border-radius:10px;padding:14px 16px;">
+          <strong>🔢 Číslo životnej cesty (Life Path)</strong><br/>
+          <span style="color:#5a5a5a;">1+3 + 9 + 1+9+9+1 = <strong>33 → 3+3 = <span style="color:#c9737a;font-size:1.1rem;">6</span></strong></span>
+        </div>
+        <div style="background:#f9f4f5;border-radius:10px;padding:14px 16px;">
+          <strong>🎂 Číslo narodenín (Birthday)</strong><br/>
+          <span style="color:#5a5a5a;">13 → 1+3 = <strong><span style="color:#c9737a;font-size:1.1rem;">4</span></strong></span>
+        </div>
+        <div style="background:#f9f4f5;border-radius:10px;padding:14px 16px;">
+          <strong>📅 Osobný rok 2026</strong><br/>
+          <span style="color:#5a5a5a;">1+3 + 9 + 2+0+2+6 = 23 → 2+3 = <strong><span style="color:#c9737a;font-size:1.1rem;">5</span></strong></span>
+        </div>
+        <div style="background:#f9f4f5;border-radius:10px;padding:14px 16px;">
+          <strong>🌙 Číslo duše (Soul Urge) — samohlásky</strong><br/>
+          <span style="color:#5a5a5a;">A+U+I+A + E+O+A = 1+3+9+1 + 5+6+1 = 26 → 2+6 = <strong><span style="color:#c9737a;font-size:1.1rem;">8</span></strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- karty čísel -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;">
+
+      <!-- Life Path 6 -->
+      <div style="background:#fff;border-radius:18px;padding:28px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.07);border-top:4px solid #c9737a;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#f7e8ea,#fff);border:2px solid #c9737a;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#c9737a;flex-shrink:0;">6</div>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;">Číslo životnej cesty</div>
+            <div style="font-size:0.75rem;color:#5a5a5a;letter-spacing:2px;text-transform:uppercase;">Opatrovateľka · Domov · Láska</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
+          <span style="background:#f7e8ea;color:#c9737a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Zodpovedná</span>
+          <span style="background:#f7e8ea;color:#c9737a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Starostlivá</span>
+          <span style="background:#f7e8ea;color:#c9737a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Ochranárska</span>
+          <span style="background:#f7e8ea;color:#c9737a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Harmónia</span>
+        </div>
+        <p style="font-size:0.88rem;color:#5a5a5a;margin-bottom:10px;"><strong>Poslanie:</strong> Šestka je číslo srdca a domova. Ľudia s týmto číslom sa rodia s prirodzeným darom starať sa o ostatných. Ich najväčšou silou je láska — nie sentimentálna, ale konkrétna, činom prejavená.</p>
+        <p style="font-size:0.88rem;color:#5a5a5a;margin-bottom:10px;"><strong>Materstvo:</strong> Šestka je numerologicky najsilnejšie číslo pre rodičovstvo. Klaudia je prirodzená matka nielen pre svoje deti — aj ľudia okolo nej cítia jej ochrannú energiu.</p>
+        <p style="font-size:0.88rem;color:#5a5a5a;"><strong>Výzva:</strong> Šestky niekedy kladú potreby druhých nad vlastné až do vyčerpania. Ich lekcia: aby mohli dávať, musia sa aj naplniť.</p>
+      </div>
+
+      <!-- Birthday 4 -->
+      <div style="background:#fff;border-radius:18px;padding:28px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.07);border-top:4px solid #c4a35a;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#faf3e0,#fff);border:2px solid #c4a35a;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#c4a35a;flex-shrink:0;">4</div>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;">Číslo narodenín</div>
+            <div style="font-size:0.75rem;color:#5a5a5a;letter-spacing:2px;text-transform:uppercase;">Staviteľka · Pevnosť · Poriadok</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
+          <span style="background:#faf3e0;color:#c4a35a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Disciplína</span>
+          <span style="background:#faf3e0;color:#c4a35a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Spoľahlivosť</span>
+          <span style="background:#faf3e0;color:#c4a35a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Pracovitosť</span>
+          <span style="background:#faf3e0;color:#c4a35a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Trpezlivosť</span>
+        </div>
+        <p style="font-size:0.88rem;color:#5a5a5a;margin-bottom:10px;"><strong>Talent:</strong> Štvorka prináša dar budovania. Klaudia vie vytvoriť pevné základy — pre rodinu, pre vzťahy, pre všetko, na čom jej záleží. Nejde jej o rýchle výsledky, ale o trvalé hodnoty.</p>
+        <p style="font-size:0.88rem;color:#5a5a5a;"><strong>Energia:</strong> Narodiť sa 13. dňa v mesiaci pridáva tvorivú iskru k praktickej štvorke — kombinácia, ktorá z Klaudie robí niekoho, kto nielen sníva, ale aj stavia.</p>
+      </div>
+
+      <!-- Soul Urge 8 -->
+      <div style="background:#fff;border-radius:18px;padding:28px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.07);border-top:4px solid #7a5a9a;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#ede8f7,#fff);border:2px solid #7a5a9a;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#7a5a9a;flex-shrink:0;">8</div>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;">Číslo duše</div>
+            <div style="font-size:0.75rem;color:#5a5a5a;letter-spacing:2px;text-transform:uppercase;">Vnútorná túžba · Sila · Úspech</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
+          <span style="background:#ede8f7;color:#7a5a9a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Ambícia</span>
+          <span style="background:#ede8f7;color:#7a5a9a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Sebavedomie</span>
+          <span style="background:#ede8f7;color:#7a5a9a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Vodcovstvo</span>
+          <span style="background:#ede8f7;color:#7a5a9a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Rovnováha</span>
+        </div>
+        <p style="font-size:0.88rem;color:#5a5a5a;margin-bottom:10px;"><strong>Hlboká túžba:</strong> Osmička ako číslo duše hovorí, že hlboko vnútri Klaudia touží po uznaní, sile a nezávislosti. Nie z egoizmu — ale preto, že cíti, že má čo ponúknuť svetu.</p>
+        <p style="font-size:0.88rem;color:#5a5a5a;"><strong>Symboly:</strong> Osmička položená nabok je symbol nekonečna ∞. Klaudia v sebe nesie nekonečnú kapacitu — dávať, milovať, rásť a začínať odznova.</p>
+      </div>
+
+      <!-- Personal Year 5 -->
+      <div style="background:#fff;border-radius:18px;padding:28px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.07);border-top:4px solid #5a9a7a;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+          <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#e8f7ed,#fff);border:2px solid #5a9a7a;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#5a9a7a;flex-shrink:0;">5</div>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;">Osobný rok 2026</div>
+            <div style="font-size:0.75rem;color:#5a5a5a;letter-spacing:2px;text-transform:uppercase;">Zmena · Sloboda · Nové začiatky</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
+          <span style="background:#e8f7ed;color:#5a9a7a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Sloboda</span>
+          <span style="background:#e8f7ed;color:#5a9a7a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Dobrodružstvo</span>
+          <span style="background:#e8f7ed;color:#5a9a7a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Premena</span>
+          <span style="background:#e8f7ed;color:#5a9a7a;border-radius:20px;padding:3px 12px;font-size:0.78rem;font-weight:700;">Rast</span>
+        </div>
+        <p style="font-size:0.88rem;color:#5a5a5a;margin-bottom:10px;"><strong>Predpoveď 2026:</strong> Rok 5 je rokom dynamickej zmeny a nových príležitostí. Pre Klaudiu to znamená pohyb vpred — nové dvere, nové stretnutia, nová energia. Čo bolo stagnujúce, sa pohne.</p>
+        <p style="font-size:0.88rem;color:#5a5a5a;"><strong>Odporúčanie:</strong> Prijať zmeny s otvorenou mysľou. Rok 5 odmeňuje tých, ktorí sa neboja skúšať nové cesty. Klaudia — toto je tvoj rok odvahy.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ALBUM ═══ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Fotoalbum</h2>
+    <p class="section-intro">Momenty, ktoré tvoria príbeh</p>
+    <div class="album-grid">
+      <div class="album-item"><div class="placeholder">🤱<span>Mama</span></div></div>
+      <div class="album-item"><div class="placeholder">👧<span>Deti</span></div></div>
+      <div class="album-item"><div class="placeholder">🌸<span>Jar</span></div></div>
+      <div class="album-item"><div class="placeholder">🏠<span>Domov</span></div></div>
+      <div class="album-item"><div class="placeholder">😄<span>Radosť</span></div></div>
+      <div class="album-item"><div class="placeholder">🌅<span>Nový deň</span></div></div>
+      <div class="album-item"><div class="placeholder">🎉<span>Oslavy</span></div></div>
+      <div class="album-item"><div class="placeholder">💪<span>Sila</span></div></div>
+    </div>
+    <p class="album-note">📸 Pre pridanie vlastných fotografií — nahraď emoji sekcie obrázkami (img src="...")</p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <p>Vytvorené s láskou pre <strong>Klaudiu Petrovskú</strong> — ženu, ktorá dokazuje každý deň, že sila nie je o tom, že nepadáš. Je o tom, že vždy vstaneš.</p>
+</footer>
+
+</body>
+</html>
