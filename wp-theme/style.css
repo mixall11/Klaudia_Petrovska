@@ -1,0 +1,359 @@
+/*
+Theme Name: Klaudia Petrovská
+Theme URI: https://klaudiapetrovska.sk
+Author: AI Agency System
+Description: Osobný profil – Klaudia Petrovská
+Version: 1.0.0
+License: Private
+Text Domain: klaudia-petrovska
+*/
+
+:root {
+  --rose:    #c9737a;
+  --rose-lt: #f7e8ea;
+  --dark:    #2c2c2c;
+  --mid:     #5a5a5a;
+  --light:   #f9f4f5;
+  --gold:    #c4a35a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.7;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #2c1a1d 0%, #5a2d35 50%, #8b4a54 100%);
+  color: #fff;
+  padding: 80px 20px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.avatar-wrap { position: relative; display: inline-block; margin-bottom: 24px; }
+.avatar {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  border: 5px solid var(--gold);
+  object-fit: cover;
+  background: #5a2d35;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 64px;
+  overflow: hidden;
+}
+.avatar-ring {
+  position: absolute; inset: -10px;
+  border-radius: 50%;
+  border: 2px dashed rgba(196,163,90,0.5);
+  animation: spin 20s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.hero .tagline {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+.hero .badges {
+  margin-top: 20px;
+  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+}
+.badge {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* ── LAYOUT ── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+section { padding: 60px 0; }
+section + section { border-top: 1px solid #e8dfe0; }
+
+h2.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  color: var(--rose);
+  margin-bottom: 8px;
+  position: relative;
+  display: inline-block;
+}
+h2.section-title::after {
+  content: '';
+  display: block;
+  height: 3px; width: 50px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin-top: 6px;
+}
+.section-intro {
+  color: var(--mid);
+  font-size: 0.95rem;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+
+/* ── INFO CARDS ── */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+.info-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px 20px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border-top: 3px solid var(--rose);
+  transition: transform .2s;
+}
+.info-card:hover { transform: translateY(-4px); }
+.info-card .icon { font-size: 2rem; margin-bottom: 8px; }
+.info-card .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--mid); margin-bottom: 4px; }
+.info-card .value { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; }
+
+/* ── STORY ── */
+.story-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+@media (max-width: 700px) { .story-wrap { grid-template-columns: 1fr; } }
+.story-text p { margin-bottom: 16px; color: var(--mid); font-size: 0.97rem; }
+.story-text p:first-child { font-size: 1.1rem; color: var(--dark); font-style: italic; }
+.story-quote {
+  background: linear-gradient(135deg, var(--rose-lt), #fff);
+  border-left: 4px solid var(--rose);
+  border-radius: 0 12px 12px 0;
+  padding: 28px 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--dark);
+  position: sticky; top: 20px;
+}
+.story-quote cite {
+  display: block;
+  margin-top: 14px;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-family: 'Lato', sans-serif;
+  color: var(--mid);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── TRAITS ── */
+.traits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+.trait-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.trait-icon {
+  font-size: 2.2rem; flex-shrink: 0;
+  width: 52px; height: 52px;
+  background: var(--rose-lt);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+}
+.trait-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 4px; }
+.trait-card p { font-size: 0.85rem; color: var(--mid); }
+
+/* ── HOROSCOPE ── */
+.horo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+@media (max-width: 700px) { .horo-grid { grid-template-columns: 1fr; } }
+.horo-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+}
+.horo-card .horo-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.horo-symbol {
+  font-size: 3rem; width: 70px; height: 70px;
+  background: linear-gradient(135deg, var(--rose-lt), #fff);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--rose);
+  flex-shrink: 0;
+}
+.horo-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; }
+.horo-sub { font-size: 0.8rem; color: var(--mid); letter-spacing: 2px; text-transform: uppercase; }
+.horo-traits { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.horo-tag {
+  background: var(--rose-lt);
+  color: var(--rose);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.horo-card p { font-size: 0.9rem; color: var(--mid); margin-bottom: 10px; }
+.stars { color: var(--gold); font-size: 1rem; margin-bottom: 8px; }
+
+/* ── GALERÍA ── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.gallery-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+  background: #e8dfe0;
+}
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+.gallery-item:hover img { transform: scale(1.07); }
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(44,26,29,0.85) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity .3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  gap: 10px;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-caption { color: #fff; font-size: 0.85rem; font-family: 'Playfair Display', serif; }
+.gallery-actions { display: flex; gap: 8px; }
+.btn-view, .btn-dl {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 0.75rem; font-weight: 700;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: transform .15s;
+}
+.btn-view:hover, .btn-dl:hover { transform: scale(1.05); }
+.btn-view {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff; backdrop-filter: blur(4px);
+}
+.btn-dl { background: var(--gold); color: #2c1a1d; }
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  display: none;
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.92);
+  align-items: center; justify-content: center;
+  flex-direction: column; gap: 16px; padding: 20px;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 78vh; border-radius: 10px; object-fit: contain; }
+.lb-bar { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.lb-caption { color: rgba(255,255,255,0.8); font-family: 'Playfair Display', serif; font-size: 1rem; }
+.lb-dl {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--gold); color: #2c1a1d;
+  padding: 8px 20px; border-radius: 20px;
+  font-weight: 700; font-size: 0.85rem; text-decoration: none;
+}
+.lb-close {
+  position: fixed; top: 18px; right: 22px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff; font-size: 1.5rem;
+  width: 44px; height: 44px;
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.lb-nav {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff; font-size: 1.4rem;
+  width: 48px; height: 48px;
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.lb-prev { left: 14px; }
+.lb-next { right: 14px; }
+
+/* ── NUMEROLÓGIA ── */
+.num-calc {
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px 28px 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  margin-bottom: 30px;
+}
+.num-calc h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; margin-bottom: 16px; color: var(--rose);
+}
+.num-calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 12px; font-size: 0.88rem; margin-bottom: 18px;
+}
+.num-item {
+  background: var(--light);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.num-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 22px;
+}
+.num-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: #2c1a1d;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.85rem;
+}
+.site-footer strong { color: var(--gold); }
